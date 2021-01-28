@@ -9,7 +9,7 @@ request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
 
 
 request.onload = function () {
-    //Access JSON data here and parse it to JS
+    //Access JSON data here and parse it to JS - OBJECT
     var data = JSON.parse(this.response);
 
     //Access JSON data to stringify
@@ -40,9 +40,29 @@ request.onload = function () {
         let objEntries = Object.entries(data);
         console.log(objEntries);
 
+        
+
     }else{
         console.log('error');
     }
+        
+       //Create Elements and get data.
+        const random = Math.random() * (19 - 0).toFixed(0);
+        
+        const h5 = document.createElement('h5'); 
+        const theTitle = data[Math.floor(random)].title;
+        h5.textContent = theTitle;
+        
+        const p = document.createElement('p');
+        const description = data[Math.floor(random)].description;
+        p.textContent = description;
+
+        
+        const cardBody = document.getElementById('card-body');
+        cardBody.prepend(p);
+        cardBody.prepend(h5);
+        
+
 
 }
 
